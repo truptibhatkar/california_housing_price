@@ -3,9 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F5F5DC;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login {
+            background: #e9eae7;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            width: 350px;
+            text-align: center;
+        }
+        .login h1 {
+            font-size: 24px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .login input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .login button {
+            background-color: #007BFF;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login button:hover {
+            background-color: #0056b3;
+        }
+        .login form {
+            margin-bottom: 15px;
+        }
+        .login form input::placeholder {
+            color: #aaaaaa;
+        }
+        .login form button {
+            margin-top: 10px;
+        }
+        .login p {
+            color: #555555;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>hello</h1>
+    <div class="login">
+        <h1>House Price Prediction</h1>
+        
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="MedInc" placeholder="Median Income (MedInc)" required="required" /><br>
+            <input type="text" name="HouseAge" placeholder="Median House Age (HouseAge)" required="required" /><br>
+            <input type="text" name="AveRooms" placeholder="Average Rooms (AveRooms)" required="required" /><br>
+            <input type="text" name="AveBedrms" placeholder="Average Bedrooms (AveBedrms)" required="required" /><br>
+            <input type="text" name="Population" placeholder="Population" required="required" /><br>
+            <input type="text" name="AveOccup" placeholder="Average Occupants (AveOccup)" required="required" /><br>
+            <input type="text" name="Latitude" placeholder="Latitude" required="required" /><br>
+            <input type="text" name="Longitude" placeholder="Longitude" required="required" /><br>
+            
+            <button type="submit">Predict</button>
+        </form>
+        <p>{{ prediction_text }}</p>
+    </div>
 </body>
 </html>
