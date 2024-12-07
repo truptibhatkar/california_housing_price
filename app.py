@@ -22,6 +22,12 @@ def predict():
     output=regmodel.predict(final_input)[0]
     return render_template("home.html",prediction_text="The predicted price is : ${}".format(output))
     
-    
+@app.route('/aboutus')
+def about():
+    return render_template("aboutus.html")
+
+@app.route('/contact')
+def con():
+    return render_template("contactus.html")
 if __name__=="__main__":
     app.run(debug=True)
